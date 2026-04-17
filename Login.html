@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login / Register – APS GYM</title>
+    <link rel="stylesheet" href="Login.css">
+    <script src="api.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div id="particles-js"></div>
+
+    <div class="container">
+        <div class="form-box">
+
+            <div class="auth-tabs">
+                <button class="auth-tab active" id="tabLogin" onclick="switchTab('login')">Sign In</button>
+                <button class="auth-tab" id="tabRegister" onclick="switchTab('register')">Register</button>
+            </div>
+
+            <div id="authMsg" class="auth-msg" style="display:none"></div>
+
+            <form id="loginForm" autocomplete="on">
+                <h2>Welcome Back 💪</h2>
+                <p style="margin-bottom:20px;font-size:14px;opacity:.7">Sign in to your APS GYM account</p>
+
+                <div class="input-group">
+                    <input type="email" id="loginEmail" required class="input-field" placeholder=" ">
+                    <label for="loginEmail">Email Address</label>
+                    <div class="glow-line"></div>
+                </div>
+
+                <div class="input-group">
+                    <input type="password" id="loginPassword" required class="input-field" placeholder=" "
+                        minlength="6">
+                    <label for="loginPassword">Password</label>
+                    <div class="glow-line"></div>
+                </div>
+
+                <div class="remember-forgot">
+                    <div class="remember">
+                        <input type="checkbox" id="remember">
+                        <label for="remember">Remember me</label>
+                    </div>
+                    <a href="#" class="forgot">Forgot Password?</a>
+                </div>
+
+                <button type="submit" class="login-btn" id="loginSubmitBtn">
+                    <span>SIGN IN</span>
+                    <div class="btn-glow"></div>
+                </button>
+
+                <div class="signup-link">
+                    Don't have an account? <a href="#" onclick="switchTab('register'); return false;">Register Free</a>
+                </div>
+            </form>
+
+            <form id="registerForm" style="display:none" autocomplete="on">
+                <h2>Join APS GYM 🏋️</h2>
+                <p style="margin-bottom:20px;font-size:14px;opacity:.7">Create your free account today</p>
+
+                <div class="input-group">
+                    <input type="text" id="regName" required class="input-field" placeholder=" " minlength="2">
+                    <label for="regName">Full Name</label>
+                    <div class="glow-line"></div>
+                </div>
+
+                <div class="input-group">
+                    <input type="email" id="regEmail" required class="input-field" placeholder=" ">
+                    <label for="regEmail">Email Address</label>
+                    <div class="glow-line"></div>
+                </div>
+
+                <div class="input-group">
+                    <input type="tel" id="regPhone" class="input-field" placeholder=" " maxlength="10">
+                    <label for="regPhone">Phone (optional)</label>
+                    <div class="glow-line"></div>
+                </div>
+
+                <div class="input-group">
+                    <input type="password" id="regPassword" required class="input-field" placeholder=" " minlength="6">
+                    <label for="regPassword">Password (min 6 chars)</label>
+                    <div class="glow-line"></div>
+                </div>
+
+                <button type="submit" class="login-btn" id="regSubmitBtn">
+                    <span>CREATE ACCOUNT</span>
+                    <div class="btn-glow"></div>
+                </button>
+
+                <div class="signup-link">
+                    Already have an account? <a href="#" onclick="switchTab('login'); return false;">Sign In</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+    <script>
+
+        function switchTab(tab) {
+            const isLogin = tab === 'login';
+            document.getElementById('loginForm').style.display = isLogin ? '' : 'none';
+            document.getElementById('registerForm').style.display = isLogin ? 'none' : '';
+            document.getElementById('tabLogin').classList.toggle('active', isLogin);
+            document.getElementById('tabRegister').classList.toggle('active', !isLogin);
+            hideMsg();
+        }
+
+
+        function showMsg(msg, isError = true) {
+            const el = document.getElementById('authMsg');
+            el.textContent = msg;
+            el.style.display = 'block';
+            el.style.background = isError ? 'rgba(220,38,38,0.15)' : 'rgba(16,185,129,0.15)';
+            el.style.borderColor = isError ? '#dc2626' : '#10b981';
+            el.style.color = isError ? '#fca5a5' : '#6ee7b7';
+        }
+        function hideMsg() {
+            document.getElementById('authMsg').style.display = 'none';
+        }
+        function setLoading(btn, loading) {
+            btn.disabled = loading;
+            btn.querySelector('span').textContent = loading ? 'Please wait…' : btn.dataset.label;
+        }
+
+
+        document.getElementById('loginSubmitBtn').dataset.label = 'SIGN IN';
+        document.getElementById('loginForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const btn = document.getElementById('loginSubmitBtn');
+            setLoading(btn, true);
+            hideMsg();
+            try {
+                const data = await apiLogin({
+                    email: document.getElementById('loginEmail').value.trim(),
+                    password: document.getElementById('loginPassword').value,
+                });
+                showMsg('✅ ' + data.message, false);
+                setTimeout(() => window.location.href = 'index.html', 1000);
+            } catch (err) {
+                showMsg('❌ ' + err.message);
+                setLoading(btn, false);
+            }
+        });
+
+
+        document.getElementById('regSubmitBtn').dataset.label = 'CREATE ACCOUNT';
+        document.getElementById('registerForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const btn = document.getElementById('regSubmitBtn');
+            setLoading(btn, true);
+            hideMsg();
+            try {
+                const data = await apiRegister({
+                    name: document.getElementById('regName').value.trim(),
+                    email: document.getElementById('regEmail').value.trim(),
+                    phone: document.getElementById('regPhone').value.trim(),
+                    password: document.getElementById('regPassword').value,
+                });
+                showMsg('🎉 ' + data.message, false);
+                setTimeout(() => window.location.href = 'index.html', 1200);
+            } catch (err) {
+                showMsg('❌ ' + err.message);
+                setLoading(btn, false);
+            }
+        });
+
+
+        if (isLoggedIn()) window.location.href = 'index.html';
+    </script>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            particlesJS('particles-js', {
+                "particles": {
+                    "number": {
+                        "value": 100,
+                        "density": {
+                            "enable": true,
+                            "value_area": 800
+                        }
+                    },
+                    "color": {
+                        "value": "#ff0015"
+                    },
+                    "shape": {
+                        "type": "circle",
+                        "stroke": {
+                            "width": 0,
+                            "color": "#ff0015"
+                        },
+                        "polygon": {
+                            "nb_sides": 5
+                        }
+                    },
+                    "opacity": {
+                        "value": 0.8,
+                        "random": true,
+                        "anim": {
+                            "enable": true,
+                            "speed": 1,
+                            "opacity_min": 0.4,
+                            "sync": false
+                        }
+                    },
+                    "size": {
+                        "value": 5,
+                        "random": true,
+                        "anim": {
+                            "enable": true,
+                            "speed": 2,
+                            "size_min": 1,
+                            "sync": false
+                        }
+                    },
+                    "line_linked": {
+                        "enable": true,
+                        "distance": 150,
+                        "color": "#00d4ff",
+                        "opacity": 0.6,
+                        "width": 1.5
+                    },
+                    "move": {
+                        "enable": true,
+                        "speed": 2,
+                        "direction": "none",
+                        "random": true,
+                        "straight": false,
+                        "out_mode": "out",
+                        "bounce": false,
+                        "attract": {
+                            "enable": true,
+                            "rotateX": 600,
+                            "rotateY": 1200
+                        }
+                    }
+                },
+                "interactivity": {
+                    "detect_on": "canvas",
+                    "events": {
+                        "onhover": {
+                            "enable": true,
+                            "mode": "repulse"
+                        },
+                        "onclick": {
+                            "enable": true,
+                            "mode": "push"
+                        },
+                        "resize": true
+                    },
+                    "modes": {
+                        "grab": {
+                            "distance": 400,
+                            "line_linked": {
+                                "opacity": 1
+                            }
+                        },
+                        "bubble": {
+                            "distance": 400,
+                            "size": 40,
+                            "duration": 2,
+                            "opacity": 8,
+                            "speed": 3
+                        },
+                        "repulse": {
+                            "distance": 100,
+                            "duration": 0.4
+                        },
+                        "push": {
+                            "particles_nb": 4
+                        },
+                        "remove": {
+                            "particles_nb": 2
+                        }
+                    }
+                },
+                "retina_detect": true
+            });
+        });
+    </script>
+
+</body>
+
+</html>

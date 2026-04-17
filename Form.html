@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gym Membership Form</title>
+    <link rel="stylesheet" href="Form.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Gym Membership Form</h1>
+        <p>Register & Pay Securely</p>
+
+        <form id="membershipForm">
+
+            <div class="section">
+                <h2>Personal Information</h2>
+                <div class="grid">
+                    <div><label>Full Name</label><input type="text" required></div>
+                    <div><label>Phone</label><input type="tel" required></div>
+                    <div><label>Email</label><input type="email" required></div>
+                    <div><label>Age</label><input type="number" required></div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Membership Plan</h2>
+                <div class="grid">
+                    <div>
+                        <label>Plan</label>
+                        <select id="plan" onchange="calculatePrice()" required>
+                            <option value="">Select</option>
+                            <option value="basic">Basic</option>
+                            <option value="standard">Standard</option>
+                            <option value="premium">Premium</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label>Duration</label>
+                        <select id="duration" onchange="calculatePrice()" required>
+                            <option value="">Select</option>
+                            <option value="1">1 Month</option>
+                            <option value="3">3 Months</option>
+                            <option value="6">6 Months</option>
+                            <option value="12">1 Year</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="price" id="price">Total Amount: ₹0</div>
+            </div>
+
+            <div class="section">
+                <h2>OTP Verification</h2>
+                <input type="text" id="otp" placeholder="Enter OTP">
+                <button type="button" onclick="sendOTP()">Send OTP</button>
+            </div>
+
+            <div class="section">
+                <h2>Payment</h2>
+                <select required>
+                    <option>UPI</option>
+                    <option>Card</option>
+                    <option>Cash</option>
+                </select>
+            </div>
+
+            <button type="submit">Submit & Pay</button>
+        </form>
+    </div>
+
+    <script src="form.js"></script>
+</body>
+
+</html>

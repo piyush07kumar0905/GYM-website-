@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>GymShop – Premium Fitness Equipment</title>
+  <meta name="description"
+    content="Shop premium gym equipment – dumbbells, treadmills, barbells, benches and more at the best prices." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="Shoping.css" />
+  <script src="api.js"></script>
+</head>
+
+<body>
+
+
+  <header class="fk-header" id="top">
+    <div class="fk-header-inner">
+
+      <!-- Logo -->
+      <a href="index.html" class="fk-logo" id="logoLink">
+        <img src="Logo.jpg" alt="GymShop Logo" class="fk-logo-img">
+        <div class="fk-logo-text">
+          <span class="fk-logo-name">GymShop</span>
+          <span class="fk-logo-tag">Explore <em>Plus</em> ✦</span>
+        </div>
+      </a>
+
+      <!-- Search Bar -->
+      <div class="fk-search-wrap">
+        <input type="search" id="searchInput" class="fk-search-input"
+          placeholder="Search for gym equipment, accessories…" autocomplete="off" />
+        <button class="fk-search-btn" id="searchBtn" aria-label="Search">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.3-4.3" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Nav Right -->
+      <nav class="fk-nav-right">
+        <a href="Login.html" class="fk-nav-btn" id="loginBtn">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+            <circle cx="12" cy="7" r="4" />
+          </svg>
+          Login
+        </a>
+        <button class="fk-nav-btn fk-cart-btn" id="cartToggle" aria-label="Open Cart">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <path d="M16 10a4 4 0 0 1-8 0" />
+          </svg>
+          Cart
+          <span class="fk-cart-count" id="cartCount">0</span>
+        </button>
+      </nav>
+    </div>
+
+    <!-- Category Bar -->
+    <div class="fk-cat-bar">
+      <div class="fk-cat-inner">
+        <a href="#all" class="fk-cat-link active" data-cat="all">All Products</a>
+        <a href="#dumbbells" class="fk-cat-link" data-cat="dumbbells">Dumbbells</a>
+        <a href="#barbells" class="fk-cat-link" data-cat="barbells">Barbells & Plates</a>
+        <a href="#machines" class="fk-cat-link" data-cat="machines">Cardio Machines</a>
+        <a href="#benches" class="fk-cat-link" data-cat="benches">Benches & Racks</a>
+        <a href="#accessories" class="fk-cat-link" data-cat="accessories">Accessories</a>
+      </div>
+    </div>
+  </header>
+
+
+  <div class="fk-promo-banner">
+    <div class="fk-promo-inner">
+      <span class="fk-promo-pill">🔥 MEGA SALE</span>
+      <span>Up to <strong>40% OFF</strong> on all gym equipment — Limited time offer!</span>
+      <span class="fk-promo-pill" style="margin-left:auto">Free Delivery on Orders ₹2,999+</span>
+    </div>
+  </div>
+
+
+  <div class="fk-layout">
+
+
+    <aside class="fk-sidebar" id="sidebar">
+      <div class="fk-sidebar-header">
+        <h2 class="fk-sidebar-title">Filters</h2>
+        <button class="fk-clear-btn" id="clearFilters">Clear All</button>
+      </div>
+
+
+      <div class="fk-filter-group">
+        <h3 class="fk-filter-heading">Price Range</h3>
+        <label class="fk-filter-option">
+          <input type="radio" name="price" value="all" checked> All Prices
+        </label>
+        <label class="fk-filter-option">
+          <input type="radio" name="price" value="0-2999"> Under ₹2,999
+        </label>
+        <label class="fk-filter-option">
+          <input type="radio" name="price" value="2999-9999"> ₹2,999 – ₹9,999
+        </label>
+        <label class="fk-filter-option">
+          <input type="radio" name="price" value="9999-24999"> ₹9,999 – ₹24,999
+        </label>
+        <label class="fk-filter-option">
+          <input type="radio" name="price" value="24999-99999"> Above ₹24,999
+        </label>
+      </div>
+
+
+      <div class="fk-filter-group">
+        <h3 class="fk-filter-heading">Category</h3>
+        <label class="fk-filter-option"><input type="checkbox" value="dumbbells"> Dumbbells</label>
+        <label class="fk-filter-option"><input type="checkbox" value="barbells"> Barbells & Plates</label>
+        <label class="fk-filter-option"><input type="checkbox" value="machines"> Cardio Machines</label>
+        <label class="fk-filter-option"><input type="checkbox" value="benches"> Benches & Racks</label>
+        <label class="fk-filter-option"><input type="checkbox" value="accessories"> Accessories</label>
+      </div>
+
+      <!-- Rating -->
+      <div class="fk-filter-group">
+        <h3 class="fk-filter-heading">Customer Rating</h3>
+        <label class="fk-filter-option">
+          <input type="radio" name="rating" value="all" checked>
+          All Ratings
+        </label>
+        <label class="fk-filter-option">
+          <input type="radio" name="rating" value="4"> 4★ & above
+        </label>
+        <label class="fk-filter-option">
+          <input type="radio" name="rating" value="3"> 3★ & above
+        </label>
+      </div>
+
+      <!-- Availability -->
+      <div class="fk-filter-group">
+        <h3 class="fk-filter-heading">Availability</h3>
+        <label class="fk-filter-option"><input type="checkbox" value="instock" id="instockFilter"> In Stock Only</label>
+        <label class="fk-filter-option"><input type="checkbox" value="sale" id="saleFilter"> On Sale</label>
+      </div>
+    </aside>
+
+    <!-- === PRODUCT AREA === -->
+    <main class="fk-main">
+
+      <!-- Sort Bar -->
+      <div class="fk-sort-bar">
+        <span class="fk-result-count" id="resultCount">Showing all products</span>
+        <div class="fk-sort-wrap">
+          <span class="fk-sort-label">Sort By:</span>
+          <button class="fk-sort-opt active" data-sort="default" id="sortDefault">Relevance</button>
+          <button class="fk-sort-opt" data-sort="low" id="sortLow">Price: Low–High</button>
+          <button class="fk-sort-opt" data-sort="high" id="sortHigh">Price: High–Low</button>
+          <button class="fk-sort-opt" data-sort="rating" id="sortRating">Top Rated</button>
+        </div>
+      </div>
+
+      <!-- Product Grid -->
+      <section class="fk-product-grid" id="productList" aria-live="polite" aria-label="Product listings">
+        <!-- Cards injected by JS -->
+      </section>
+
+      <!-- Empty state -->
+      <div class="fk-empty" id="emptyState" style="display:none;">
+        <div class="fk-empty-icon">🔍</div>
+        <h3>No products found</h3>
+        <p>Try adjusting your filters or search term.</p>
+        <button class="fk-btn-primary" id="resetSearch">Reset Filters</button>
+      </div>
+    </main>
+  </div>
+
+
+  <aside class="fk-cart-drawer" id="cartPanel" aria-hidden="true" aria-label="Shopping cart">
+    <div class="fk-cart-top">
+      <h2 class="fk-cart-title">My Cart <span class="fk-cart-subtitle" id="cartItemCount"></span></h2>
+      <button class="fk-drawer-close" id="closeCart" aria-label="Close cart">✕</button>
+    </div>
+
+    <ul class="fk-cart-list" id="cartItems"></ul>
+
+    <div class="fk-cart-empty" id="cartEmpty">
+      <div style="font-size:3rem">🛒</div>
+      <p>Your cart is empty</p>
+      <span>Add items to get started</span>
+    </div>
+
+    <div class="fk-cart-footer" id="cartFooter">
+      <div class="fk-savings-info" id="savingsInfo"></div>
+      <div class="fk-price-details">
+        <div class="fk-price-row">
+          <span>Price (<span id="cartItemCount2">0</span> items)</span>
+          <span>₹<span id="cartSubtotal">0.00</span></span>
+        </div>
+        <div class="fk-price-row fk-discount">
+          <span>Discount</span>
+          <span class="fk-green">– ₹<span id="cartDiscount">0.00</span></span>
+        </div>
+        <div class="fk-price-row">
+          <span>Delivery Charges</span>
+          <span class="fk-green" id="deliveryCharge">FREE</span>
+        </div>
+        <div class="fk-price-divider"></div>
+        <div class="fk-price-row fk-total-row">
+          <span>Total Amount</span>
+          <span>₹<span id="cartTotal">0.00</span></span>
+        </div>
+      </div>
+      <div class="fk-cart-actions">
+        <button class="fk-btn-outline" id="clearCart">Clear Cart</button>
+        <button class="fk-btn-primary fk-checkout-btn" id="checkout">Place Order →</button>
+      </div>
+    </div>
+  </aside>
+
+
+  <div class="fk-overlay" id="cartOverlay"></div>
+
+
+  <footer class="fk-footer">
+    <div class="fk-footer-inner">
+      <div class="fk-footer-col">
+        <h4>ABOUT</h4>
+        <a href="#">About Us</a>
+        <a href="#">Careers</a>
+        <a href="#">Press</a>
+        <a href="#">Corporate Info</a>
+      </div>
+      <div class="fk-footer-col">
+        <h4>HELP</h4>
+        <a href="#">Payments</a>
+        <a href="#">Shipping</a>
+        <a href="#">Returns</a>
+        <a href="#">FAQ</a>
+      </div>
+      <div class="fk-footer-col">
+        <h4>CONSUMER POLICY</h4>
+        <a href="#">Cancellation & Returns</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Security</a>
+        <a href="#">Privacy</a>
+      </div>
+      <div class="fk-footer-col">
+        <h4>SOCIAL</h4>
+        <a href="#">Facebook</a>
+        <a href="#">Twitter</a>
+        <a href="#">YouTube</a>
+        <a href="#">Instagram</a>
+      </div>
+      <div class="fk-footer-col fk-footer-address">
+        <h4>MAIL US</h4>
+        <address>GymShop, Fitness Hub,<br>Delhi – 110001, India<br><a
+            href="mailto:support@gymshop.com">support@gymshop.com</a></address>
+      </div>
+    </div>
+    <div class="fk-footer-bottom">
+      <span>© 2025 GymShop. All rights reserved.</span>
+      <div class="fk-payment-icons">
+        <span class="fk-pay-badge">VISA</span>
+        <span class="fk-pay-badge">MasterCard</span>
+        <span class="fk-pay-badge">UPI</span>
+        <span class="fk-pay-badge">NetBanking</span>
+        <span class="fk-pay-badge">EMI</span>
+      </div>
+    </div>
+  </footer>
+
+
+  <div class="fk-modal-overlay" id="checkoutModal" aria-hidden="true">
+    <div class="fk-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="fk-modal-header">
+        <h2 id="modalTitle">Secure Checkout</h2>
+        <button class="fk-drawer-close" id="closeCheckout" aria-label="Close checkout">✕</button>
+      </div>
+
+      <div class="fk-modal-steps">
+        <span class="fk-step active">1 Address</span>
+        <span class="fk-step-arrow">›</span>
+        <span class="fk-step">2 Payment</span>
+        <span class="fk-step-arrow">›</span>
+        <span class="fk-step">3 Confirm</span>
+      </div>
+
+      <form id="checkoutForm" class="fk-checkout-form">
+        <div class="fk-form-row">
+          <div class="fk-form-group">
+            <label for="fname">Full Name</label>
+            <input type="text" id="fname" required placeholder="Enter your full name">
+          </div>
+          <div class="fk-form-group">
+            <label for="fphone">Phone Number</label>
+            <input type="tel" id="fphone" required placeholder="10-digit mobile number">
+          </div>
+        </div>
+        <div class="fk-form-group">
+          <label for="faddress">Delivery Address</label>
+          <textarea id="faddress" required rows="3" placeholder="House No., Street, Area, City, PIN Code"></textarea>
+        </div>
+        <div class="fk-form-row">
+          <div class="fk-form-group">
+            <label for="fcity">City</label>
+            <input type="text" id="fcity" required placeholder="City">
+          </div>
+          <div class="fk-form-group">
+            <label for="fpin">PIN Code</label>
+            <input type="text" id="fpin" required placeholder="6-digit PIN" maxlength="6">
+          </div>
+        </div>
+        <div class="fk-form-group">
+          <label for="fpayment">Payment Method</label>
+          <select id="fpayment">
+            <option value="upi">UPI (GPay / PhonePe / Paytm)</option>
+            <option value="card">Credit / Debit Card</option>
+            <option value="netbanking">Net Banking</option>
+            <option value="cod">Cash on Delivery</option>
+            <option value="emi">EMI (No Cost)</option>
+          </select>
+        </div>
+        <div class="fk-order-summary" id="modalOrderSummary"></div>
+        <button type="submit" class="fk-btn-primary fk-full-btn">
+          Pay ₹<span id="checkoutTotal">0</span> Securely →
+        </button>
+        <p class="fk-secure-note">🔒 100% Secure Payments · 7-Day Easy Return</p>
+      </form>
+    </div>
+  </div>
+
+
+  <div class="fk-toast" id="toast"></div>
+
+  <script src="cart.js"></script>
+</body>
+
+</html>

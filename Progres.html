@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>FitDash — Progress & Planner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <link rel="stylesheet" href="progres.css" />
+
+  <meta name="theme-color" content="#0b1020" id="meta-theme-color" />
+</head>
+<body>
+  <div class="bg-animated"></div>
+  <header class="topbar slide-down">
+    <div class="brand">
+      <svg viewBox="0 0 24 24" class="logo" aria-hidden="true">
+        <path d="M12 2 L15 8 L22 9 L17 13 L18 21 L12 17 L6 21 L7 13 L2 9 L9 8 " />
+      </svg>
+      <div>
+        <h1>APS GYM</h1>
+        <p class="muted">Progress Chart</p>
+      </div>
+    </div>
+
+    <div class="top-actions">
+      <label class="toggle" title="Toggle Light/Dark Mode">
+        <input id="darkModeToggle" type="checkbox" aria-label="Toggle dark mode" />
+        <span class="toggle-slider"></span>
+      </label>
+
+      <button id="exportCsv" class="btn">Export CSV</button>
+      <button id="resetData" class="btn ghost">Reset</button>
+    </div>
+  </header>
+
+  <main class="container fade-in-up">
+    <!-- Achievements Feature (New) -->
+    <section class="card achievements" id="achievementsCard">
+      <div class="card-head">
+        <h2>Trophies & Achievements</h2>
+        <span class="muted small" id="earnedCount">3 / 5 Earned</span>
+      </div>
+      <div class="achievements-grid" id="achievementsGrid">
+        <!-- Rendered by JS -->
+      </div>
+    </section>
+
+    <section class="card overview fade-in-up delay-1" id="overviewCard">
+      <div class="card-head">
+        <h2>Progress Overview</h2>
+        <div class="card-actions">
+          <button id="editOverview" class="btn small">Edit</button>
+          <button id="openStats" class="btn small ghost">More</button>
+        </div>
+      </div>
+
+      <div class="overview-grid">
+        <div class="stat hover-scale">
+          <span class="label">Current</span>
+          <span id="currentWeight" class="value">—</span>
+          <span class="muted small" id="lastUpdated">—</span>
+        </div>
+        <div class="stat hover-scale">
+          <span class="label">Target</span>
+          <span id="targetWeight" class="value">—</span>
+        </div>
+        <div class="stat hover-scale">
+          <span class="label">BMI</span>
+          <span id="bmiScore" class="value">—</span>
+        </div>
+        <div class="stat hover-scale">
+          <span class="label">Body Fat</span>
+          <span id="bodyFat" class="value">—</span>
+        </div>
+        <div class="stat hover-scale">
+          <span class="label">Muscle Gain</span>
+          <span id="muscleGain" class="value">—</span>
+        </div>
+        <div class="stat hover-scale">
+          <span class="label">Streak</span>
+          <div><span id="streak" class="value gradient-text">0</span> <span class="muted small">days</span></div>
+        </div>
+      </div>
+
+      <div class="overview-footer">
+        <div class="progress-row">
+          <div class="progress-label">Weight progress</div>
+          <div class="progress-bar" aria-hidden="true">
+            <div id="weightProgress" class="progress-fill" style="width:0%"></div>
+          </div>
+          <div class="muted small" id="progressMeta">—</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card chart fade-in-up delay-2" id="weeklyChartCard">
+      <div class="card-head">
+        <h2>Weekly Chart</h2>
+        <div class="card-actions">
+          <select id="chartMetric" aria-label="Select chart metric" class="select">
+            <option value="all">All (weight, calories, mins)</option>
+            <option value="weight">Weight</option>
+            <option value="calories">Calories</option>
+            <option value="minutes">Minutes</option>
+          </select>
+        </div>
+      </div>
+      <div class="chart-wrap">
+        <canvas id="weeklyChart" aria-label="Weekly progress chart" role="img"></canvas>
+      </div>
+    </section>
+
+    <section class="card prs fade-in-up delay-3" id="prsCard">
+      <div class="card-head">
+        <h2>Personal Records</h2>
+        <div class="card-actions">
+          <button id="addPR" class="btn small">Add</button>
+        </div>
+      </div>
+      <ul id="prsList" class="prs-list" aria-live="polite"></ul>
+    </section>
+
+    <section class="card schedule fade-in-up delay-4" id="scheduleCard">
+      <div class="card-head">
+        <h2>Weekly Schedule</h2>
+        <div class="card-actions">
+          <button id="clearSchedule" class="btn small ghost">Clear</button>
+          <button id="planWorkout" class="btn small">Plan</button>
+        </div>
+      </div>
+      <div id="weekGrid" class="week-grid" role="group" aria-label="Week days"></div>
+
+      <div class="schedule-controls">
+        <label class="input-inline">Next workout
+          <input id="nextWorkout" type="date" class="glass-input" />
+        </label>
+
+        <div class="hydration">
+          <label class="label">Hydration</label>
+          <div class="water-row">
+            <div class="water-display"><span id="waterAmount" class="gradient-text">0</span> / <span id="waterGoal">2000</span> ml</div>
+            <div class="water-controls">
+              <button id="add250" class="btn small rounded">+250</button>
+              <button id="add500" class="btn small rounded">+500</button>
+              <button id="resetWater" class="btn small ghost rounded">Reset</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card planner fade-in-up delay-5" id="plannerCard">
+      <div class="card-head">
+        <h2>Workout Planner</h2>
+        <div class="card-actions">
+          <button id="addPlan" class="btn small">New Plan</button>
+        </div>
+      </div>
+      <ul id="plansList" class="plans-list" aria-live="polite"></ul>
+    </section>
+  </main>
+
+  <footer class="footer-note fade-in-up delay-6">
+    Data saved locally. • <span id="version">v1.4</span>
+  </footer>
+
+  <div id="modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-panel" role="document">
+      <button class="modal-close" id="modalClose" aria-label="Close modal">&times;</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <script src="progres.js" defer></script>
+</body>
+</html>

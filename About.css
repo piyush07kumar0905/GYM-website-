@@ -1,0 +1,155 @@
+:root {
+  --card-radius: 12px;
+  --card-padding: 18px;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: Segoe UI, Roboto, Arial, sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #f6d365 0%, #fda085 35%, #a1c4fd 100%);
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 40px;
+  min-height: 100vh;
+}
+
+.page-heading {
+  text-align: center;
+  font-size: 2.5rem;
+  margin: 0 0 40px 0;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.cards-container {
+  display: flex;
+  gap: 20px;
+  max-width: 1100px;
+  width: 100%;
+}
+
+.card {
+  flex: 1 1 0;
+  border-radius: var(--card-radius);
+  padding: var(--card-padding);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.card-image {
+  display: block;
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  border-top-left-radius: var(--card-radius);
+  border-top-right-radius: var(--card-radius);
+  margin: 0 0 12px 0
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 30px rgba(0, 0, 0, 0.18);
+}
+
+.card h2 {
+  margin: 0 0 10px 0;
+  font-size: 1.25rem
+}
+
+.card .main {
+  margin: 0 0 12px 0;
+  line-height: 1.4
+}
+
+.points {
+  padding-left: 18px;
+  margin: 0;
+  display: block
+}
+
+.points li {
+  margin: 10px 0;
+  list-style: decimal inside
+}
+
+.point-btn {
+  display: inline-block;
+  background: transparent;
+  border: none;
+  color: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+}
+
+.small {
+  margin: 6px 0 0 0;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: .95rem
+}
+
+.small {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height .28s ease, opacity .22s ease, transform .22s ease;
+  transform-origin: top;
+}
+
+.small.open {
+  opacity: 1;
+  max-height: 360px;
+}
+
+.point-btn:focus {
+  outline: 3px solid rgba(59, 130, 246, 0.35);
+  outline-offset: 3px;
+  border-radius: 4px
+}
+
+.card-1 {
+  background: #ffffff;
+  color: #1f3b6e
+}
+
+.card-2 {
+  background: #0f172a;
+  color: #f3f4f6
+}
+
+.card-3 {
+  background: #fff7ed;
+  color: #7a2e8a
+}
+
+.card-1 .small {
+  color: #27508a
+}
+
+.card-2 .small {
+  color: #cbd5e1
+}
+
+.card-3 .small {
+  color: #8f5aa8
+}
+
+@media (max-width:900px) {
+  .cards-container {
+    flex-direction: column
+  }
+}
+
+@media (max-width:600px) {
+  .card-image {
+    height: 160px
+  }
+}

@@ -1,0 +1,74 @@
+[
+    {
+        "id": 1,
+        "name": "Adjustable Dumbbells",
+        "price": 89.99,
+        "image": "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=500&h=400&fit=crop&auto=format&q=80"
+    },
+    {
+        "id": 2,
+        "name": "Motorized Treadmill",
+        "price": 599.00,
+        "image": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&h=400&fit=crop&auto=format&q=80"
+    },
+    {
+        "id": 3,
+        "name": "Olympic Barbell Set",
+        "price": 149.50,
+        "image": "https://images.unsplash.com/photo-1605296867304-46d5465a13f1?w=500&h=400&fit=crop&auto=format&q=80"
+    },
+    {
+        "id": 4,
+        "name": "Adjustable Weight Bench",
+        "price": 199.00,
+        "image": "https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=500&h=400&fit=crop&auto=format&q=80"
+    },
+    {
+        "id": 5,
+        "name": "Magnetic Rowing Machine",
+        "price": 399.00,
+        "image": "https://images.unsplash.com/photo-1521804906057-1df8fdb718b7?w=500&h=400&fit=crop&auto=format&q=80"
+    },
+    {
+        "id": 6,
+        "name": "Weight Plates Set 50kg",
+        "price": 129.00,
+        "image": "https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=500&h=400&fit=crop&auto=format&q=80"
+    },
+    {
+        "id": 7,
+        "name": "Multi-Function Cable Machine",
+        "price": 489.00,
+        "image": "https://images.unsplash.com/photo-1637666062717-1c6bcfa4a4df?w=500&h=400&fit=crop&auto=format&q=80"
+    },
+    {
+        "id": 8,
+        "name": "Power Squat Rack",
+        "price": 359.99,
+        "image": "https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=500&h=400&fit=crop&auto=format&q=80"
+    },
+    {
+        "id": 9,
+        "name": "Cast Iron Kettlebell 24kg",
+        "price": 54.99,
+        "image": "https://images.unsplash.com/photo-1517344884509-a0c97ec11bcc?w=500&h=400&fit=crop&auto=format&q=80"
+    },
+    {
+        "id": 10,
+        "name": "Resistance Bands Set",
+        "price": 34.99,
+        "image": "https://images.unsplash.com/photo-1598289431512-b97b0917affc?w=500&h=400&fit=crop&auto=format&q=80"
+    },
+    {
+        "id": 11,
+        "name": "Ab Wheel Roller",
+        "price": 29.99,
+        "image": "https://images.unsplash.com/photo-1544033527-b192daee1f5b?w=500&h=400&fit=crop&auto=format&q=80"
+    },
+    {
+        "id": 12,
+        "name": "Premium Yoga Mat",
+        "price": 44.99,
+        "image": "https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?w=500&h=400&fit=crop&auto=format&q=80"
+    }
+]

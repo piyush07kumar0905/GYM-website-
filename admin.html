@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="Form.css">
+
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background: #020617;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    th,
+    td {
+      padding: 14px;
+      text-align: center;
+      border-bottom: 1px solid #1e293b;
+    }
+
+    th {
+      background: #22c55e;
+      color: #020617;
+      font-weight: bold;
+    }
+
+    tr:hover {
+      background: #020617;
+    }
+
+    .status {
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: bold;
+    }
+
+    .active {
+      background: #22c55e;
+      color: #020617;
+    }
+
+    .inactive {
+      background: #ef4444;
+      color: #fff;
+    }
+
+    @media (max-width: 600px) {
+
+      table,
+      thead,
+      tbody,
+      th,
+      td,
+      tr {
+        display: block;
+      }
+
+      th {
+        display: none;
+      }
+
+      td {
+        padding: 10px;
+        text-align: right;
+        position: relative;
+      }
+
+      td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        font-weight: bold;
+        color: #cbd5f5;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>Admin Dashboard</h1>
+    <p>Registered Gym Members</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Phone</th>
+          <th>Plan</th>
+          <th>Duration</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td data-label="Name">Piyush</td>
+          <td data-label="Phone">9XXXXXXXXX</td>
+          <td data-label="Plan">Premium</td>
+          <td data-label="Duration">1 Months</td>
+          <td data-label="Status">
+            <span class="status active">Active</span>
+          </td>
+        </tr>
+
+        <tr>
+          <td data-label="Name">gotaa</td>
+          <td data-label="Phone">8XXXXXXXXX</td>
+          <td data-label="Plan">Standard</td>
+          <td data-label="Duration">3 Months</td>
+          <td data-label="Status">
+            <span class="status inactive">Inactive</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</body>
+
+</html>

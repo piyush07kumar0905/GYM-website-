@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitZone - Your Ultimate Gym Experience</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="api.js"></script>
+    <script>
+        if (!isLoggedIn()) {
+            window.location.href = 'Login.html';
+        }
+    </script>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo">
+                <img src="WhatsApp Image 2025-11-28 at 22.30.50_698c45f8.jpg" alt="APS GYM Logo" class="logo-img"
+                    onerror="this.onerror=null; this.src='logo.svg'">
+                <h1>APS GYM</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="SHOPPING.html">Shopping</a></li>
+                <li><a href="Progres.html">Progress Chart</a></li>
+                <li><a href="About.html">About</a></li>
+                <li><a href="membership.html">Membership</a></li>
+            </ul>
+            <div style="display: flex; gap: 1rem; align-items: center;">
+                <button class="theme-toggle" id="themeToggle">🌙 Dark Mode</button>
+                <a href="#" id="navAuthBtn" class="nav-login-btn">Login / Sign Up</a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to FitZone</h1>
+            <p>Transform Your Body, Transform Your Life</p>
+            <button class="cta-button">Join Now</button>
+        </div>
+    </section>
+
+    <!-- Home Section -->
+    <section id="home" class="home">
+        <div class="container">
+            <h2>Why Choose uss?</h2>
+            <div class="gym-content">
+                <div class="gym-image">
+                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&h=400&fit=crop"
+                        alt="Modern Gym Equipment">
+                </div>
+                <div class="gym-description">
+                    <p>
+                        At FitZone, we believe fitness is not just about the body—it's about building a healthier,
+                        stronger version of yourself. Our state-of-the-art facility is equipped with the latest gym
+                        equipment,
+                        expert trainers, and a supportive community ready to help you achieve your goals.
+                    </p>
+                    <p>
+                        Whether you're a beginner or an advanced athlete, we have customized programs tailored to your
+                        needs.
+                        Our certified personal trainers are here to guide you every step of the way, ensuring you get
+                        the most
+                        out of your workouts while maintaining proper form and safety.
+                    </p>
+                    <ul class="features">
+                        <li>✓ State-of-the-art equipment</li>
+                        <li>✓ Certified personal trainers</li>
+                        <li>✓ Group fitness classes</li>
+                        <li>✓ Nutrition counseling</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Offers Section with Marquee -->
+    <section class="offers">
+        <div class="marquee-container">
+            <div class="marquee">
+                <span>🎯 LIMITED TIME OFFER: 50% OFF on Annual Membership! | 💳 NO JOINING FEE for First 100 Members! |
+                    🏆 FREE PERSONAL TRAINING SESSION with Every Package! With Alok trainer | 🎁 Get FREE Gym Bag &
+                    Water Bottle on Sign Up!</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section id="schedule" class="schedule">
+        <div class="container">
+            <h2>Weekly Schedule</h2>
+            <div class="schedule-grid">
+                <div class="schedule-card">
+                    <h3>Monday</h3>
+                    <div class="schedule-time">
+                        <p><strong>6:00 AM - 7:30 AM</strong></p>
+                        <p>Morning Cardio & Chest</p>
+                    </div>
+                    <div class="schedule-time">
+                        <p><strong>5:00 PM - 8:00 PM</strong></p>
+                        <p>Evening Classes & Triceps</p>
+                    </div>
+                </div>
+
+                <div class="schedule-card">
+                    <h3>Tuesday</h3>
+                    <div class="schedule-time">
+                        <p><strong>6:00 AM - 7:00 AM</strong></p>
+                        <p>Morning Cardio & Back</p>
+                    </div>
+                    <div class="schedule-time">
+                        <p><strong>5:00 PM - 8:00 PM</strong></p>
+                        <p>Weight Training & Biceps</p>
+                    </div>
+                </div>
+
+                <div class="schedule-card">
+                    <h3>Wednesday</h3>
+                    <div class="schedule-time">
+                        <p><strong>6:00 AM - 7:00 AM</strong></p>
+                        <p>Spin Classes & Sholder</p>
+                    </div>
+                    <div class="schedule-time">
+                        <p><strong>5:00 PM - 8:00 PM</strong></p>
+                        <p>HIIT & Core Fourarms</p>
+                    </div>
+                </div>
+
+                <div class="schedule-card">
+                    <h3>Thursday</h3>
+                    <div class="schedule-time">
+                        <p><strong>6:00 AM - 7:00 AM</strong></p>
+                        <p>Strength & Chest PR</p>
+                    </div>
+                    <div class="schedule-time">
+                        <p><strong>----</strong></p>
+                        <p>REST</p>
+                    </div>
+                </div>
+
+                <div class="schedule-card">
+                    <h3>Friday</h3>
+                    <div class="schedule-time">
+                        <p><strong>6:00 AM - 10:00 AM</strong></p>
+                        <p>Full Body Workout</p>
+                    </div>
+                    <div class="schedule-time">
+                        <p><strong>5:00 PM - 8:00 PM</strong></p>
+                        <p>Strching</p>
+                    </div>
+                </div>
+
+                <div class="schedule-card">
+                    <h3>Saturday</h3>
+                    <div class="schedule-time">
+                        <p><strong>8:00 AM - 1:00 PM</strong></p>
+                        <p>Weekend Classes & Training</p>
+                    </div>
+                    <div class="schedule-time">
+                        <p><strong>3:00 PM - 7:00 PM</strong></p>
+                        <p>Personal Training Sessions</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Motivation Section -->
+    <section class="motivation">
+        <div class="container">
+            <h2>Your Fitness Journey Starts Here</h2>
+            <div class="motivation-content">
+                <div class="motivation-image">
+                    <img src="Motivate.jpg" alt="Motivation Gym">
+                </div>
+                <div class="motivation-text">
+                    <p>
+                        Success is not just about the destination—it's about the journey. At FitZone, we celebrate every
+                        milestone,
+                        every rep, and every drop of sweat. Our supportive community ensures you never feel alone in
+                        your fitness journey.
+                    </p>
+                    <p>
+                        With personalized workout plans, nutrition guidance, and constant motivation from our expert
+                        trainers,
+                        you'll achieve results faster than you ever thought possible. Remember, the only bad workout is
+                        the one that didn't happen!
+                    </p>
+                    <p>
+                        Join thousands of members who have already transformed their lives. Your best self is
+                        waiting—let's make it happen together!
+                    </p>
+                    <button class="cta-button">Start Your Transformation</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>FitZone</h3>
+                <p>Your Ultimate Fitness Destination</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#membership">Membership</a></li>
+                    <li><a href="#help">Help</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact Us</h4>
+                <p>Email: alokvishwakarma1801@gmail.com</p>
+                <p>Phone: 91+ 9508625639</p>
+                <p>Address: PP Savani University Surat Dhamdod (803101)</p>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="#">Facebook</a>
+                    <a href="https://www.instagram.com//" target="_blank">Instagram</a>
+                    <a href="#">Twitter</a>
+                    <a href="#">YouTube</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 FitZone. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms &
+                    Conditions</a></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

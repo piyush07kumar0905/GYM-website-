@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Membership Plans – APS GYM</title>
+  <meta name="description"
+    content="Choose your APS GYM membership plan. Basic, Premium or Elite — transform your body with expert trainers and world-class equipment." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="Membership.css">
+  <script src="api.js"></script>
+</head>
+
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="mem-nav" id="memNav">
+    <div class="mem-nav-inner">
+      <a href="index.html" class="mem-logo">
+        <img src="Logo.jpg" alt="APS GYM" class="mem-logo-img">
+        <span class="mem-logo-text">APS <em>GYM</em></span>
+      </a>
+      <ul class="mem-nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="SHOPPING.html">Shop</a></li>
+        <li><a href="About.html">About</a></li>
+        <li><a href="Progres.html">Progress</a></li>
+        <li><a href="membership.html" class="active">Membership</a></li>
+      </ul>
+      <a href="Login.html" class="mem-nav-cta" id="navAuthBtn">Login / Sign Up</a>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="mem-hero">
+    <div class="mem-hero-bg"></div>
+    <div class="mem-hero-content">
+      <div class="mem-hero-badge">💥 Limited Time — Save up to 40%</div>
+      <h1 class="mem-hero-title">Choose Your<br><span class="mem-gradient-text">Fitness Journey</span></h1>
+      <p class="mem-hero-sub">No contracts. No hidden fees. Cancel anytime. Join 10,000+ members who've transformed
+        their lives.</p>
+
+      <!-- Billing Toggle -->
+      <div class="mem-toggle-wrap">
+        <span class="mem-toggle-label" id="labelMonthly">Monthly</span>
+        <button class="mem-toggle" id="billingToggle" aria-pressed="false" aria-label="Toggle billing period">
+          <span class="mem-toggle-knob"></span>
+        </button>
+        <span class="mem-toggle-label" id="labelYearly">
+          Yearly
+          <span class="mem-save-badge">Save 40%</span>
+        </span>
+      </div>
+    </div>
+
+    <!-- Floating stats -->
+    <div class="mem-stats-bar">
+      <div class="mem-stat">
+        <span class="mem-stat-num">10K+</span>
+        <span class="mem-stat-lbl">Active Members</span>
+      </div>
+      <div class="mem-stat-divider"></div>
+      <div class="mem-stat">
+        <span class="mem-stat-num">50+</span>
+        <span class="mem-stat-lbl">Expert Trainers</span>
+      </div>
+      <div class="mem-stat-divider"></div>
+      <div class="mem-stat">
+        <span class="mem-stat-num">200+</span>
+        <span class="mem-stat-lbl">Weekly Classes</span>
+      </div>
+      <div class="mem-stat-divider"></div>
+      <div class="mem-stat">
+        <span class="mem-stat-num">98%</span>
+        <span class="mem-stat-lbl">Satisfaction Rate</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PLANS GRID ===== -->
+  <section class="mem-plans-section" id="plans">
+    <div class="mem-plans-grid">
+
+      <!-- BASIC -->
+      <article class="mem-card mem-basic" id="cardBasic">
+        <div class="mem-card-top">
+          <div class="mem-plan-icon">🏋️</div>
+          <div class="mem-plan-name">Basic</div>
+          <div class="mem-plan-tagline">Perfect for beginners</div>
+          <div class="mem-price-block">
+            <span class="mem-currency">₹</span>
+            <span class="mem-amount" data-monthly="1000" data-yearly="600">1,000</span>
+            <span class="mem-period">/month</span>
+          </div>
+          <div class="mem-billed-note" id="basicNote"></div>
+        </div>
+
+        <ul class="mem-features">
+          <li class="mem-feat yes">Access to gym floor (6 AM – 10 PM)</li>
+          <li class="mem-feat yes">Standard group fitness classes</li>
+          <li class="mem-feat yes">Basic fitness assessment</li>
+          <li class="mem-feat yes">Locker room access</li>
+          <li class="mem-feat yes">10% discount on personal training</li>
+          <li class="mem-feat no">Unlimited class bookings</li>
+          <li class="mem-feat no">Nutrition counseling</li>
+          <li class="mem-feat no">24/7 gym access</li>
+          <li class="mem-feat no">Dedicated personal trainer</li>
+        </ul>
+
+        <button class="mem-btn mem-btn-outline" id="basicBtn" onclick="handleSubscribe('Basic', this)">Get Started →</button>
+      </article>
+
+      <!-- PREMIUM (Popular) -->
+      <article class="mem-card mem-premium mem-popular" id="cardPremium">
+        <div class="mem-popular-badge">⭐ Most Popular</div>
+        <div class="mem-card-top">
+          <div class="mem-plan-icon">🔥</div>
+          <div class="mem-plan-name">Premium</div>
+          <div class="mem-plan-tagline">Best for serious athletes</div>
+          <div class="mem-price-block">
+            <span class="mem-currency">₹</span>
+            <span class="mem-amount" data-monthly="1500" data-yearly="900">1,500</span>
+            <span class="mem-period">/month</span>
+          </div>
+          <div class="mem-billed-note" id="premNote"></div>
+        </div>
+
+        <ul class="mem-features">
+          <li class="mem-feat yes">All Basic features included</li>
+          <li class="mem-feat yes">Unlimited premium class access</li>
+          <li class="mem-feat yes">Personalized training plan</li>
+          <li class="mem-feat yes">Monthly nutrition counseling</li>
+          <li class="mem-feat yes">Unlimited class bookings</li>
+          <li class="mem-feat yes">Guest passes (2/month)</li>
+          <li class="mem-feat yes">Progress tracking app</li>
+          <li class="mem-feat no">24/7 gym access</li>
+          <li class="mem-feat no">Dedicated personal trainer</li>
+        </ul>
+
+        <button class="mem-btn mem-btn-solid" id="premBtn" onclick="handleSubscribe('Premium', this)">Get Premium →</button>
+      </article>
+
+      <!-- ELITE -->
+      <article class="mem-card mem-elite" id="cardElite">
+        <div class="mem-card-top">
+          <div class="mem-plan-icon">👑</div>
+          <div class="mem-plan-name">Elite</div>
+          <div class="mem-plan-tagline">For champions only</div>
+          <div class="mem-price-block">
+            <span class="mem-currency">₹</span>
+            <span class="mem-amount" data-monthly="2000" data-yearly="1200">2,000</span>
+            <span class="mem-period">/month</span>
+          </div>
+          <div class="mem-billed-note" id="eliteNote"></div>
+        </div>
+
+        <ul class="mem-features">
+          <li class="mem-feat yes">All Premium features included</li>
+          <li class="mem-feat yes">24/7 unrestricted gym access</li>
+          <li class="mem-feat yes">Dedicated personal trainer</li>
+          <li class="mem-feat yes">Weekly 1-on-1 training sessions</li>
+          <li class="mem-feat yes">Full nutrition & diet planning</li>
+          <li class="mem-feat yes">Unlimited guest passes</li>
+          <li class="mem-feat yes">Spa & sauna access</li>
+          <li class="mem-feat yes">Priority class booking</li>
+          <li class="mem-feat yes">Body composition analysis</li>
+        </ul>
+
+        <button class="mem-btn mem-btn-elite" id="eliteBtn" onclick="handleSubscribe('Elite', this)">Go Elite →</button>
+      </article>
+    </div>
+
+    <!-- Compare note -->
+    <p class="mem-compare-note">All plans include free access to our mobile app · No joining fees · Cancel anytime</p>
+  </section>
+
+  <!-- ===== TRANSFORMATION BANNER ===== -->
+  <section class="mem-transform">
+    <div class="mem-transform-inner">
+      <div class="mem-transform-text">
+        <h2>Your Transformation<br>Starts <span class="mem-gradient-text">Today</span></h2>
+        <p>Over 10,000 members have already achieved their dream physique with our expert-led programs. You're just one
+          decision away.</p>
+        <div class="mem-transform-stats">
+          <div class="mem-ts"><span>🏆</span> Avg. 8kg lost in 12 weeks</div>
+          <div class="mem-ts"><span>💪</span> 30% strength gain in 8 weeks</div>
+          <div class="mem-ts"><span>😊</span> 98% member satisfaction</div>
+        </div>
+      </div>
+      <div class="mem-transform-img">
+        <img src="Motivate.jpg" alt="Gym Transformation" loading="lazy">
+        <div class="mem-img-badge">
+          <span class="mem-img-badge-num">10K+</span>
+          <span class="mem-img-badge-txt">Success Stories</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WHAT'S INCLUDED ===== -->
+  <section class="mem-perks">
+    <div class="mem-perks-inner">
+      <div class="mem-section-label">Why APS GYM?</div>
+      <h2 class="mem-section-title">Everything You Need to Succeed</h2>
+      <div class="mem-perks-grid">
+        <div class="mem-perk">
+          <div class="mem-perk-icon">🏋️‍♂️</div>
+          <h3>World-Class Equipment</h3>
+          <p>200+ premium machines and free weights updated annually.</p>
+        </div>
+        <div class="mem-perk">
+          <div class="mem-perk-icon">👨‍🏫</div>
+          <h3>Certified Trainers</h3>
+          <p>50+ expert trainers with nationally recognized certifications.</p>
+        </div>
+        <div class="mem-perk">
+          <div class="mem-perk-icon">🥗</div>
+          <h3>Nutrition Guidance</h3>
+          <p>Personalized meal plans crafted by registered dietitians.</p>
+        </div>
+        <div class="mem-perk">
+          <div class="mem-perk-icon">📱</div>
+          <h3>APS GYM App</h3>
+          <p>Track workouts, book classes, and monitor your body metrics.</p>
+        </div>
+        <div class="mem-perk">
+          <div class="mem-perk-icon">🧘</div>
+          <h3>200+ Classes / Week</h3>
+          <p>Yoga, HIIT, Zumba, CrossFit, Spinning, and more — every week.</p>
+        </div>
+        <div class="mem-perk">
+          <div class="mem-perk-icon">🔒</div>
+          <h3>Safe & Secure</h3>
+          <p>24/7 security, clean locker rooms, and a welcoming environment.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIALS ===== -->
+  <section class="mem-testimonials">
+    <div class="mem-testi-inner">
+      <div class="mem-section-label">Member Stories</div>
+      <h2 class="mem-section-title">Real Results, Real People</h2>
+      <div class="mem-testi-grid">
+
+        <div class="mem-testi-card">
+          <div class="mem-testi-stars">★★★★★</div>
+          <p class="mem-testi-text">""</p>
+          <div class="mem-testi-author">
+            <img src="Shivam.jpg" alt="Shivam" class="mem-testi-avatar"
+              onerror="this.src='https://ui-avatars.com/api/?name=Shivam&background=ff3366&color=fff'">
+            <div>
+              <div class="mem-testi-name">Shivam R.</div>
+              <div class="mem-testi-plan">Elite Member · 6 months</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mem-testi-card mem-testi-featured">
+          <div class="mem-testi-stars">★★★★★</div>
+          <p class="mem-testi-text">""</p>
+          <div class="mem-testi-author">
+            <img src="Piyush.jpg" alt="Piyush" class="mem-testi-avatar"
+              onerror="this.src='https://ui-avatars.com/api/?name=Piyush&background=7c3aed&color=fff'">
+            <div>
+              <div class="mem-testi-name">Piyush K.</div>
+              <div class="mem-testi-plan">Premium Member · 1 year</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mem-testi-card">
+          <div class="mem-testi-stars">★★★★★</div>
+          <p class="mem-testi-text">""</p>
+          <div class="mem-testi-author">
+            <img src="" alt="Alok" class="mem-testi-avatar">
+            <div>
+              <div class="mem-testi-name">Rahul M.</div>
+              <div class="mem-testi-plan">Basic Member · 3 months</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="mem-faq">
+    <div class="mem-faq-inner">
+      <div class="mem-section-label">Got Questions?</div>
+      <h2 class="mem-section-title">Frequently Asked Questions</h2>
+      <div class="mem-faq-list">
+
+        <div class="mem-faq-item" id="faq1">
+          <button class="mem-faq-q" onclick="toggleFaq('faq1')">
+            Can I cancel my membership anytime?
+            <span class="mem-faq-icon">+</span>
+          </button>
+          <div class="mem-faq-a">Yes! There are absolutely no lock-in contracts. You can cancel your membership at any
+            time with no penalties or hidden fees. We believe you'll stay because you love it, not because you have to.
+          </div>
+        </div>
+
+        <div class="mem-faq-item" id="faq2">
+          <button class="mem-faq-q" onclick="toggleFaq('faq2')">
+            Is there a joining fee?
+            <span class="mem-faq-icon">+</span>
+          </button>
+          <div class="mem-faq-a">No joining fees for the first 100 members per month! After that, a one-time joining fee
+            of ₹500 applies. Yearly plan subscribers always get the joining fee waived.</div>
+        </div>
+
+        <div class="mem-faq-item" id="faq3">
+          <button class="mem-faq-q" onclick="toggleFaq('faq3')">
+            Can I upgrade or downgrade my plan?
+            <span class="mem-faq-icon">+</span>
+          </button>
+          <div class="mem-faq-a">Absolutely! You can upgrade your plan at any time and the difference will be pro-rated
+            for the remaining month. Downgrades take effect from the next billing cycle.</div>
+        </div>
+
+        <div class="mem-faq-item" id="faq4">
+          <button class="mem-faq-q" onclick="toggleFaq('faq4')">
+            What payment methods are accepted?
+            <span class="mem-faq-icon">+</span>
+          </button>
+          <div class="mem-faq-a">We accept all major payment methods including UPI (GPay, PhonePe, Paytm), Credit/Debit
+            cards (Visa, Mastercard), Net Banking, and Cash. We also offer No-Cost EMI on 6, 9, and 12-month plans.
+          </div>
+        </div>
+
+        <div class="mem-faq-item" id="faq5">
+          <button class="mem-faq-q" onclick="toggleFaq('faq5')">
+            Is there a free trial available?
+            <span class="mem-faq-icon">+</span>
+          </button>
+          <div class="mem-faq-a">Yes! We offer a 7-day free trial for all new members. Just walk in with a valid ID and
+            experience the gym firsthand. No credit card required for the trial.</div>
+        </div>
+
+        <div class="mem-faq-item" id="faq6">
+          <button class="mem-faq-q" onclick="toggleFaq('faq6')">
+            What are the gym timings?
+            <span class="mem-faq-icon">+</span>
+          </button>
+          <div class="mem-faq-a">Standard timings are 5:30 AM – 11:00 PM on weekdays and 6:00 AM – 9:00 PM on weekends.
+            Elite members enjoy 24/7 unrestricted access throughout the year including holidays.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FINAL CTA ===== -->
+  <section class="mem-final-cta">
+    <div class="mem-final-inner">
+      <h2>Ready to Transform Your Life?</h2>
+      <p>Join thousands of members who wake up every day stronger, healthier, and more confident.</p>
+      <div class="mem-final-btns">
+        <a href="Form.html" class="mem-btn mem-btn-solid mem-btn-lg">Start Free 7-Day Trial</a>
+        <a href="#plans" class="mem-btn mem-btn-ghost mem-btn-lg">Compare Plans</a>
+      </div>
+      <div class="mem-final-trust">
+        <span>✓ No credit card required</span>
+        <span>✓ Cancel anytime</span>
+        <span>✓ No joining fee</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="mem-footer">
+    <div class="mem-footer-inner">
+      <div class="mem-footer-brand">
+        <img src="Logo.jpg" alt="APS GYM" class="mem-foot-logo" onerror="this.style.display='none'">
+        <div>
+          <div class="mem-foot-name">APS GYM</div>
+          <div class="mem-foot-tagline">Your Ultimate Fitness Destination</div>
+        </div>
+      </div>
+      <div class="mem-footer-col">
+        <h4>Quick Links</h4>
+        <a href="index.html">Home</a>
+        <a href="SHOPPING.html">Shop</a>
+        <a href="About.html">About Us</a>
+        <a href="Progres.html">Progress</a>
+        <a href="membership.html">Membership</a>
+      </div>
+      <div class="mem-footer-col">
+        <h4>Support</h4>
+        <a href="#">FAQ</a>
+        <a href="#">Contact Us</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms & Conditions</a>
+      </div>
+      <div class="mem-footer-col">
+        <h4>Contact</h4>
+        <a href="mailto:alokvishwakarma1801@gmail.com">alokvishwakarma1801@gmail.com</a>
+        <a href="tel:+919508625639">+91 9508625639</a>
+        <span>PP Savani University, Surat</span>
+      </div>
+    </div>
+    <div class="mem-footer-bottom">
+      <span>© 2026 APS GYM. All rights reserved.</span>
+      <div class="mem-footer-socials">
+        <a href="#">Facebook</a>
+        <a href="https://www.instagram.com//" target="_blank">Instagram</a>
+        <a href="#">Twitter</a>
+        <a href="#">YouTube</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* ============ BILLING TOGGLE ============ */
+    const toggle = document.getElementById('billingToggle');
+    const amounts = document.querySelectorAll('.mem-amount');
+    const basicNote = document.getElementById('basicNote');
+    const premNote = document.getElementById('premNote');
+    const eliteNote = document.getElementById('eliteNote');
+
+    let yearly = false;
+
+    function updatePrices() {
+      amounts.forEach(el => {
+        const val = yearly
+          ? parseInt(el.dataset.yearly).toLocaleString('en-IN')
+          : parseInt(el.dataset.monthly).toLocaleString('en-IN');
+        el.textContent = val;
+      });
+
+      const note = yearly ? 'Billed annually · Save 40%' : 'Billed monthly';
+      [basicNote, premNote, eliteNote].forEach(n => {
+        if (n) n.textContent = note;
+      });
+
+      document.getElementById('labelMonthly').classList.toggle('active', !yearly);
+      document.getElementById('labelYearly').classList.toggle('active', yearly);
+    }
+
+    toggle.addEventListener('click', () => {
+      yearly = !yearly;
+      toggle.setAttribute('aria-pressed', yearly);
+      toggle.classList.toggle('toggled', yearly);
+      updatePrices();
+    });
+
+    updatePrices(); // init
+
+    /* ============ FAQ ACCORDION ============ */
+    function toggleFaq(id) {
+      const item = document.getElementById(id);
+      const isOpen = item.classList.contains('open');
+      // Close all
+      document.querySelectorAll('.mem-faq-item').forEach(f => {
+        f.classList.remove('open');
+        f.querySelector('.mem-faq-icon').textContent = '+';
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        item.querySelector('.mem-faq-icon').textContent = '×';
+      }
+    }
+
+    /* ============ NAVBAR SCROLL ============ */
+    window.addEventListener('scroll', () => {
+      document.getElementById('memNav').classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    /* ============ SCROLL REVEAL ============ */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('revealed');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll(
+      '.mem-card, .mem-perk, .mem-testi-card, .mem-faq-item, .mem-transform-inner'
+    ).forEach(el => observer.observe(el));
+
+    /* ============ API INTEGRATION ============ */
+    async function handleSubscribe(plan, btnEl) {
+      if (!isLoggedIn()) {
+        alert('Please log in or create an account to start your membership!');
+        window.location.href = 'Login.html';
+        return;
+      }
+
+      const ogText = btnEl.textContent;
+      btnEl.textContent = 'Processing...';
+      btnEl.disabled = true;
+
+      try {
+        const billingStr = yearly ? 'yearly' : 'monthly';
+        const data = await apiSubscribe({ plan, billing: billingStr, paymentMethod: 'UPI' });
+        alert(data.message);
+      } catch (err) {
+        alert('❌ Error: ' + err.message);
+      } finally {
+        btnEl.textContent = ogText;
+        btnEl.disabled = false;
+      }
+    }
+  </script>
+</body>
+
+</html>
